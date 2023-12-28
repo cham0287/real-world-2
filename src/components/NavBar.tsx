@@ -13,10 +13,13 @@ const NavBar = () => {
 
   return (
     <nav className='flex px-10 py-4 justify-between'>
-      <div className='text-green-600 font-bold text-xl'>conduit</div>
+      <div className='text-primary font-bold text-xl'>conduit</div>
       <ul className='flex gap-4 text-gray-400'>
         {NAV_LIST.map(({ text, pathname }) => (
-          <li key={pathname} className={`${currentPathname === pathname && 'text-black'}`}>
+          <li
+            key={pathname}
+            className={`${currentPathname === pathname && 'text-black'}`}
+          >
             <Link href={pathname}>{text}</Link>
           </li>
         ))}
