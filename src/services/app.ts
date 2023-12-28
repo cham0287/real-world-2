@@ -8,6 +8,7 @@ export async function fetchData<T>(url: string, method: HttpMethod = 'GET', body
       method,
       headers: {
         'Content-Type': 'application/json',
+        token: 'xxxxxx.yyyyyyy.zzzzzz',
       },
     };
 
@@ -15,7 +16,7 @@ export async function fetchData<T>(url: string, method: HttpMethod = 'GET', body
       options.body = JSON.stringify(body);
     }
 
-    const response = await fetch(url, options);
+    const response = await fetch(process.env.NEXT_PUBLIC_API_URL + url, options);
     if (!response.ok) {
       throw new Error(`데이터를 가져오는 중에 오류가 발생했습니다. 상태 코드: ${response.status}`);
     }
