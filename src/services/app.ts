@@ -2,6 +2,7 @@
 type HttpMethod = 'GET' | 'POST' | 'DELETE' | 'PUT' | 'UPDATE';
 
 // 공통 Fetch 함수
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function fetchData<T>(url: string, method: HttpMethod = 'GET', body?: any): Promise<T> {
   try {
     const options: RequestInit = {
