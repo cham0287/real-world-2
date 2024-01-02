@@ -3,12 +3,23 @@ import { getArticles } from '@/services/articles';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import Article from './Article';
+import { ArticlesDTO } from '@/types/articles';
 
-const ArticleList = () => {
-  const { data } = useQuery({ queryKey: ['/api', '/articles'], queryFn: getArticles });
+interface Props {
+  articles: ArticlesDTO['articles'];
+}
 
+const ArticleList = ({ articles }: Props) => {
   return (
-    <div>{data?.articles && data.articles.map((article) => <Article key={article.slug} article={article} />)}</div>
+    <div>
+      <section className='flex gap-5'>
+        <article>
+          {articles.map((article) => (
+            <Article key={article.slug} article={article} />
+          ))}
+        </article>
+      </section>
+    </div>
   );
 };
 
